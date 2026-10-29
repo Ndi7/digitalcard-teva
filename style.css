@@ -1,1 +1,255 @@
 
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root {
+  --background: #f5f0e7;
+  --paper: #fffdf8;
+  --ink: #51483e;
+  --muted: #9a8e7d;
+  --accent: #a78b68;
+  --line: #e9dfd0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #fffaf0 0%, transparent 65%),
+    var(--background);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  width: min(100% - 32px, 580px);
+  min-height: 100svh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 0 24px;
+}
+
+.top-label {
+  margin-bottom: 25px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 490px;
+  padding: 48px 30px 34px;
+  overflow: hidden;
+  text-align: center;
+  background: var(--paper);
+  border: 1px solid rgba(167, 139, 104, 0.22);
+  border-radius: 5px;
+  box-shadow: 0 20px 60px rgba(88, 69, 43, 0.07);
+}
+
+.decorative-line {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  width: 42px;
+  height: 2px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+.envelope-icon {
+  display: grid;
+  place-items: center;
+  width: 65px;
+  height: 65px;
+  margin: 20px auto 30px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 28px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 20px 0 16px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(29px, 7vw, 39px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.intro-text {
+  margin: 0 auto 30px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.primary-button {
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--ink);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.primary-button span {
+  margin-left: 12px;
+}
+
+.primary-button:hover {
+  background: #75614c;
+  transform: translateY(-2px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.message {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.message.visible {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.small-flower {
+  margin: 25px auto;
+  color: var(--accent);
+  font-size: 23px;
+}
+
+.message h1 {
+  font-size: clamp(29px, 7vw, 36px);
+}
+
+.message-text {
+  max-width: 390px;
+  margin: 24px auto 30px;
+  color: #766a5c;
+  font-size: 15px;
+  line-height: 2;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.signature {
+  margin-top: 28px;
+}
+
+.signature-line {
+  display: block;
+  width: 34px;
+  height: 1px;
+  margin: auto;
+  background: var(--line);
+}
+
+.signature p {
+  margin-top: 15px;
+  color: var(--muted);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.text-button {
+  margin-top: 18px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.bottom-area {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.music-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 15px;
+  border: 1px solid #dfd4c4;
+  border-radius: 30px;
+  background: rgba(255, 253, 248, 0.65);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.music-button:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
+#musicIcon {
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.footer-note {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.3px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    min-height: 460px;
+    padding: 42px 22px 28px;
+  }
+
+  .message-text {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
