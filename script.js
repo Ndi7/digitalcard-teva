@@ -1,5 +1,4 @@
 
-
 const friends = {
   "miss-winda": {
     name: "MISS WINDA",
@@ -106,7 +105,6 @@ Terus bertumbuh menjadi pribadi yang kuat, rendah hati, dan penuh kasih. Bukan h
   }
 };
 
-
 const defaultMessage = {
   name: "YOU",
   title: "A little reminder for you.",
@@ -116,10 +114,12 @@ const defaultMessage = {
     "You are allowed to grow at your own pace."
 };
 
+// Ambil ID teman dari URL, misalnya ?to=miss-winda
 const params = new URLSearchParams(window.location.search);
-const recipientId = (params.get("to") || "").toLowerCase();
+const recipientId = (params.get("to") || "").trim().toLowerCase();
 const cardData = friends[recipientId] || defaultMessage;
 
+// Ambil elemen dari index.html
 const intro = document.getElementById("intro");
 const message = document.getElementById("message");
 const openButton = document.getElementById("openButton");
@@ -129,22 +129,25 @@ const musicLabel = document.getElementById("musicLabel");
 const musicIcon = document.getElementById("musicIcon");
 const audio = document.getElementById("backgroundMusic");
 
+// Tampilkan nama, judul, dan pesan sesuai URL
 document.getElementById("recipient").textContent = cardData.name;
 document.getElementById("messageTitle").textContent = cardData.title;
 document.getElementById("messageText").textContent = cardData.message;
 
 let isOpened = false;
 
+// Menampilkan pesan dengan animasi fade
 function showMessage() {
   message.classList.remove("hidden");
   message.classList.remove("visible");
 
-  // Memulai ulang animasi fade.
+  // Memulai ulang animasi fade
   void message.offsetWidth;
 
   message.classList.add("visible");
 }
 
+// Memutar backsound
 async function startMusic() {
   try {
     await audio.play();
@@ -156,41 +159,50 @@ async function startMusic() {
   }
 }
 
+// Tombol untuk membuka kartu
 openButton.addEventListener("click", async () => {
   if (!isOpened) {
     isOpened = true;
+
     intro.classList.add("hidden");
     showMessage();
 
-    // Musik baru dimulai setelah interaksi pengguna.
+    // Aktifkan tombol musik setelah interaksi pengguna
     musicButton.disabled = false;
+
+    // Mulai musik setelah tombol pembuka ditekan
     await startMusic();
   }
 });
 
+// Tombol untuk membaca ulang pesan
 replayButton.addEventListener("click", () => {
   showMessage();
 });
 
+// Tombol untuk memutar atau menghentikan musik
 musicButton.addEventListener("click", async () => {
   if (audio.paused) {
     await startMusic();
   } else {
     audio.pause();
-    musicLabel.textContent = "Music is off";
-    musicIcon.textContent = "♫";
   }
 });
 
+// Perbarui tulisan saat musik mulai diputar
 audio.addEventListener("playing", () => {
   musicLabel.textContent = "Music is playing";
+  musicIcon.textContent = "♫";
 });
 
+// Perbarui tulisan saat musik dihentikan
 audio.addEventListener("pause", () => {
   musicLabel.textContent = "Music is off";
+  musicIcon.textContent = "♫";
 });
 
+// Beri tahu jika file musik gagal dimuat
 audio.addEventListener("error", () => {
   musicLabel.textContent = "Music unavailable";
+  musicIcon.textContent = "♫";
 });
-
