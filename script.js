@@ -119,16 +119,16 @@ const params = new URLSearchParams(window.location.search);
 const recipientId = (params.get("to") || "").trim().toLowerCase();
 // Lagu khusus untuk setiap anggota TEVA
 const friendSongs = {
-  "miss-winda": "music-miss-winda.mp3",
-  "miss-delva": "music-miss-delva.mp3",
-  "miss-mei": "music-miss-mei.mp3",
-  "miss-thesa": "music-miss-thesa.mp3",
-  "miss-rahel": "music-miss-rahel.mp3",
-  "miss-lestari": "music-miss-lestari.mp3",
-  "miss-selly": "music-miss-selly.mp3",
-  "seam-daniel": "music-seam-daniel.mp3",
-  "seam-jason": "music-seam-jason.mp3",
-  "seam-andi": "music-seam-andi.mp3"
+  "miss-winda": "music/music-miss-winda.mp3",
+  "miss-delva": "music/music-miss-delva.mp3",
+  "miss-mei": "music/music-miss-mei.mp3",
+  "miss-thesa": "music/music-miss-thesa.mp3",
+  "miss-rahel": "music/music-miss-rahel.mp3",
+  "miss-lestari": "music/music-miss-lestari.mp3",
+  "miss-selly": "music/music-miss-selly.mp3",
+  "seam-daniel": "music/music-seam-daniel.mp3",
+  "seam-jason": "music/music-seam-jason.mp3",
+  "seam-andi": "music/music-seam-andi.mp3"
 };
 const cardData = friends[recipientId] || defaultMessage;
 
@@ -143,7 +143,7 @@ const musicIcon = document.getElementById("musicIcon");
 const audio = document.getElementById("backgroundMusic");
 
 // Pilih lagu berdasarkan penerima kartu
-audio.src = friendSongs[recipientId] || "music.mp3";
+audio.src = friendSongs[recipientId] || "music/music.mp3";
 audio.load();
 
 // Tampilkan nama, judul, dan pesan sesuai URL
