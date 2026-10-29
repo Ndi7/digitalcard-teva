@@ -1,1 +1,59 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f0e7">
+  <meta name="description" content="Sebuah kartu kecil berisi pesan penyemangat untukmu.">
+  <title>A Little Note for You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <div class="top-label">A LITTLE NOTE FOR YOU</div>
+
+    <section class="card" aria-live="polite">
+      <div class="decorative-line"></div>
+
+      <div id="intro" class="intro">
+        <div class="envelope-icon" aria-hidden="true">✉</div>
+        <p class="eyebrow">A MOMENT JUST FOR YOU</p>
+        <h1>Someone has<br>something to tell you.</h1>
+        <p class="intro-text">
+          A small reminder, made with care.
+        </p>
+        <button id="openButton" class="primary-button">
+          Open your card <span aria-hidden="true">↗</span>
+        </button>
+      </div>
+
+      <div id="message" class="message hidden">
+        <p class="eyebrow">A NOTE FOR <span id="recipient">YOU</span></p>
+        <div class="small-flower" aria-hidden="true">✳</div>
+        <h1 id="messageTitle">A little reminder</h1>
+        <p id="messageText" class="message-text"></p>
+        <div class="signature">
+          <span class="signature-line"></span>
+          <p>With care, always.</p>
+        </div>
+        <button id="replayButton" class="text-button">
+          Read it again ↻
+        </button>
+      </div>
+    </section>
+
+    <div class="bottom-area">
+      <button id="musicButton" class="music-button" disabled>
+        <span id="musicIcon" aria-hidden="true">♫</span>
+        <span id="musicLabel">Music is off</span>
+      </button>
+      <p class="footer-note">Take a breath. You're doing just fine.</p>
+    </div>
+  </main>
+
+  <audio id="backgroundMusic" src="music.mp3" loop preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
+
